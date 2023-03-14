@@ -1,7 +1,6 @@
 package user
 
 import (
-	"encoding/json"
 	"github.com/homelifehq/aircall.go/aircall"
 	"github.com/homelifehq/aircall.go/api/number"
 )
@@ -27,16 +26,4 @@ type Resource struct {
 
 func NewAPI(client *aircall.Client) API {
 	return API{version: "v1", client: client}
-}
-
-// UnMarshal decodes user related webhook call and
-// converts it to a User.Resource
-func UnMarshal(data []byte) (Resource, error) {
-	var user Resource
-
-	if err := json.Unmarshal(data, &user); err != nil {
-		return user, err
-	}
-
-	return user, nil
 }
